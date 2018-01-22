@@ -3,4 +3,9 @@ An application which reads latest 10 tweets from a user time line based on certa
 Created an MVC web App using jquery to fetch data asynchronously.
 Implemented the major functionality i.e retrieving the latest tweets and added a search field for user to filter tweets.
 Covered important functionality with Unit tests using Moq and Unity Container for Dependency resolution.
-Placed required comments whereever necessary.
+Placed required comments where ever necessary.
+The Front End has a search functionality that a user can type a string from the tweet content.
+Also one may able to clear the search field and get back the latest tweets.
+This Application is hosted on Azure as a web App and one may hit the below URL to test the functionality.
+
+http://twitterwebdemo.azurewebsites.net/
