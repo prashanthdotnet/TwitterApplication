@@ -28,7 +28,8 @@
         });
     });
     function GetTweets(s) {
-        $.ajax('http://localhost:59932/home/GetTweets/?q=' + $("#txtSearch").val(),
+       var url = 'home/GetTweets/?q=';
+        $.ajax(url + $("#txtSearch").val(),
             {
                 success: function (data, status, xhr) {   // success callback function
                     $("#tweetsContainer").html(data);
