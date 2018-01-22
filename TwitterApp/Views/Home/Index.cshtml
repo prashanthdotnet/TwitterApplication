@@ -1,4 +1,4 @@
-﻿
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,7 +8,16 @@
 
 <p></p>
 <div>
-    <input type="text" id="txtSearch" class="form-control col-md-5" /> <div class="col-md-1"> <button id="btnSearch" class="btn btn-primary ">Search</button></div>
+    <input type="text" id="txtSearch" class="form-control col-md-5" />
+
+    <div class="col-md-2">
+        <span>
+            <button id="btnSearch" class="btn btn-primary ">Search</button>
+        </span>
+        <span>
+            <button id="btnClear" class="btn btn-primary ">Clear</button>
+        </span>
+    </div>
 </div>
 <br />
 <br />
@@ -19,16 +28,29 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+
         GetTweets();
         //Getting tweets every one min
         setInterval(GetTweets, 60000);
 
+        $("#txtSearch").on("keydown", function (e) {
+            if (e.keyCode === 13) {  
+                GetTweets();
+            }
+        });
+       
         $("#btnSearch").click(function () {
             GetTweets();
         });
+
+        $("#btnClear").click(function () {
+            $("#txtSearch").val('');
+            GetTweets();
+        });
     });
+
     function GetTweets(s) {
-       var url = 'home/GetTweets/?q=';
+        var url = 'home/GetTweets/?q=';
         $.ajax(url + $("#txtSearch").val(),
             {
                 success: function (data, status, xhr) {   // success callback function
