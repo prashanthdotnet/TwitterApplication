@@ -1,0 +1,33 @@
+﻿@model IEnumerable<TwitterApp.Models.TwitterModel>
+
+@foreach (var tweet in Model)
+{
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">@tweet.UserName</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-2">
+                <img src="@tweet.UserProfileImage" />
+            </div>
+            <div class="col-md-10">
+                <div>
+                    <p>
+                        @tweet.TweetContent
+                    </p>
+                </div>
+                <div>
+                    Tweet Date : @tweet.TweetDate
+                </div>
+
+                <div>
+                    Retweet Count : @tweet.RetweetCount
+                </div>
+                <div>
+                    User Screen Name : @tweet.UserScreenName
+                </div>
+            </div>
+
+        </div>
+    </div>
+}

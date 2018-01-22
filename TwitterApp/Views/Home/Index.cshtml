@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<h2>Tweets</h2>
+
+<p></p>
+<div>
+    <input type="text" id="txtSearch" class="form-control col-md-5" /> <div class="col-md-1"> <button id="btnSearch" class="btn btn-primary ">Search</button></div>
+</div>
+<br />
+<br />
+<br />
+<div id="tweetsContainer">
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        GetTweets();
+        //Getting tweets every one min
+        setInterval(GetTweets, 60000);
+
+        $("#btnSearch").click(function () {
+            GetTweets();
+        });
+    });
+    function GetTweets(s) {
+        $.ajax('http://localhost:59932/home/GetTweets/?q=' + $("#txtSearch").val(),
+            {
+                success: function (data, status, xhr) {   // success callback function
+                    $("#tweetsContainer").html(data);
+                },
+                error: function (jqXhr, textStatus, errorMessage) { // error callback
+                    $('p').append('Error: ' + errorMessage);
+                }
+            });
+    }
+</script>
